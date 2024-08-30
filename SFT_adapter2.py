@@ -111,7 +111,7 @@ eval_dataset=dataset["test"]
 
 for question in eval_dataset["Question"]:
     input_text=f"### Question: {question} ### Answer:"
-    inputs=tokenizer(input_text)
+    inputs=tokenizer(input_text, return_tensors="pt")
     outputs=model.generate(**inputs, max_length=128)
 
     generated_text= tokenizer.decode(outputs[0], skip_special_tokens=True)
