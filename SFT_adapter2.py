@@ -82,7 +82,7 @@ sft_config = SFTConfig(
 trainer = SFTTrainer(
     model,
     train_dataset=dataset["train"],
-    eval_dataset=dataset["test"],
+    #eval_dataset=dataset["test"],
     args=SFTConfig(output_dir="~/output"),
     formatting_func=formatting_prompts_func,
     data_collator=collator,
@@ -95,6 +95,7 @@ trainer.train()
 
 trainer.model.save_pretrained(new_model)
 
+eval_dataset=dataset["test"]
 df = pd.DataFrame(eval_dataset)
 df.to_csv('eval_dataset.csv', index=False)
 
