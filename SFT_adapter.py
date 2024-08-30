@@ -8,6 +8,7 @@ from trl import SFTConfig, SFTTrainer, DataCollatorForCompletionOnlyLM
 from peft import LoraConfig
 from datasets import Dataset
 
+from huggingface_hub.hf_api import HfFolder; HfFolder.save_token("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")
 
 device_map={"":0}
 model_name="meta-llama/Meta-Llama-3.1-8B"
@@ -38,7 +39,7 @@ model.config.pretraining_tp=1
 tokenizer=AutoTokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 
-dataset=pd.read_csv("questions_and_answers copy.csv")
+dataset=pd.read_csv("questions_and_answers.csv")
 dataset=Dataset.from_pandas(dataset)
 
 
@@ -55,7 +56,7 @@ collator = DataCollatorForCompletionOnlyLM(instruction_template=instruction_temp
 
 
 peft_config = LoraConfig(
-    r=64,
+    r=16,
     lora_alpha=16,
     lora_dropout=0.1,
     bias="none",
@@ -65,7 +66,7 @@ peft_config = LoraConfig(
 sft_config = SFTConfig(
     output_dir="/tmp",
     num_train_epochs=1,
-    per_device_train_batch_size=4,
+    per_device_train_batch_size=1,
     gradient_accumulation_steps=1,
     gradient_checkpointing=True,
     save_steps=10,
@@ -83,7 +84,7 @@ trainer = SFTTrainer(
     data_collator=collator,
     peft_config=peft_config,
     tokenizer=tokenizer,
-    max_seq_length=512,
+    max_seq_length=128,
 )
 
 trainer.train()
