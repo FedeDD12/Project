@@ -12,7 +12,7 @@ from huggingface_hub.hf_api import HfFolder; HfFolder.save_token("hf_WuJQzrKNIbH
 
 device_map={"":0}
 model_name="meta-llama/Meta-Llama-3.1-8B"
-#new_model = "llama-3.1-8b-math"
+new_model = "llama-3.1-8b-math"
 
 compute_dtype=getattr(torch, "float16")
 
@@ -93,7 +93,7 @@ trainer = SFTTrainer(
 
 trainer.train()
 
-#trainer.model.save_pretrained(new_model)
+trainer.model.save_pretrained(new_model)
 
 #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #model.to(device) # Move the model to the device
