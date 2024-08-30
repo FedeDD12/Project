@@ -40,7 +40,7 @@ model.config.pretraining_tp=1
 tokenizer=AutoTokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 
-dataset=pd.read_csv("questions_and_answers copy.csv")
+dataset=pd.read_csv("questions_and_answers.csv")
 dataset=Dataset.from_pandas(dataset)
 
 dataset=dataset.train_test_split(test_size=0.1)
