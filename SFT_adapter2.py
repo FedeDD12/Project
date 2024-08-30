@@ -108,7 +108,7 @@ trainer.model.save_pretrained(new_model)
 
 eval_dataset=dataset["test"]
 
-for question in eval_dataset["Question"]
+for question in eval_dataset["Question"]:
     input_text=f"### Question: {question} ### Answer:"
     inputs=tokenizer(input_text, return_tensor="pt")
     outputs=model.generate(**inputs, max_length=128)
