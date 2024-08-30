@@ -55,7 +55,7 @@ def formatting_prompts_func(example):
 
 #instruction_template="### Question:"
 response_template = " ### Answer:"
-collator = DataCollatorForCompletionOnlyLM(instruction_template=instruction_template, response_template=response_template, tokenizer=tokenizer)
+collator = DataCollatorForCompletionOnlyLM(response_template=response_template, tokenizer=tokenizer)
 
 
 peft_config = LoraConfig(
