@@ -82,7 +82,7 @@ sft_config = SFTConfig(
 trainer = SFTTrainer(
     model,
     train_dataset=dataset["train"],
-    #eval_dataset=dataset["test"]
+    eval_dataset=dataset["test"]
     args=SFTConfig(output_dir="/tmp"),
     formatting_func=formatting_prompts_func,
     data_collator=collator,
