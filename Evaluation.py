@@ -2,11 +2,11 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import pandas as pd
 
 
-model_path="~/llama-3.1-8b-math"
+model_path="llama-3.1-8b-math"
 model=AutoModelForCausalLM.from_pretrained(model_path)
 tokenizer=AutoTokenizer.from_pretrained(model_path)
 
-eval_dataset=pd.read_csv("~/eval_dataset.csv")
+eval_dataset=pd.read_csv("eval_dataset.csv")
 print(eval_dataset.head())
 
 for question in eval_dataset["Question"]:
