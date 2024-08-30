@@ -88,7 +88,7 @@ trainer = SFTTrainer(
     data_collator=collator,
     peft_config=peft_config,
     tokenizer=tokenizer,
-    max_seq_length=128,
+    max_seq_length=256,
 )
 
 trainer.train()
