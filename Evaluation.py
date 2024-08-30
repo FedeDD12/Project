@@ -1,9 +1,10 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer
-import pandas as pd
 
+import pandas as pd
+from adapters import AutoAdapterModel, AutoTokenizer
 
 model_path="llama-3.1-8b-math"
-model=AutoModelForCausalLM.from_pretrained(model_path)
+model = AutoAdapterModel.from_pretrained(model_path)
+
 tokenizer=AutoTokenizer.from_pretrained(model_path)
 
 eval_dataset=pd.read_csv("eval_dataset.csv")
