@@ -72,10 +72,10 @@ sft_config = SFTConfig(
     gradient_accumulation_steps=1,
     gradient_checkpointing=True,
     save_steps=10,
-    save_total_limit=2,Q
+    save_total_limit=2,
     logging_steps=10,
     logging_dir="/tmp",
-    overwrite_output_dir=Trueeval
+    overwrite_output_dir=True
 )
 
 trainer = SFTTrainer(
