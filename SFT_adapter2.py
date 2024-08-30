@@ -67,7 +67,7 @@ peft_config = LoraConfig(
 )
 
 sft_config = SFTConfig(
-    output_dir="/tmp",
+    output_dir="/~/output",
     num_train_epochs=1,
     per_device_train_batch_size=1,
     gradient_accumulation_steps=1,
@@ -83,7 +83,7 @@ trainer = SFTTrainer(
     model,
     train_dataset=dataset["train"],
     eval_dataset=dataset["test"],
-    args=SFTConfig(output_dir="/tmp"),
+    args=SFTConfig(output_dir="/~/output"),
     formatting_func=formatting_prompts_func,
     data_collator=collator,
     peft_config=peft_config,
