@@ -100,9 +100,13 @@ model.save_pretrained("~/output")
 
 model.push_to_hub(new_model)
 
+
+train_dataset=dataset["train"]
 eval_dataset=dataset["test"]
-df = pd.DataFrame(eval_dataset)
-df.to_csv('eval_dataset.csv', index=False)
+df1= pd.DataFrame(train_dataset)
+df2 = pd.DataFrame(eval_dataset)
+df1.to_csv('train_dataset.csv', index=False)
+df2.to_csv('eval_dataset.csv', index=False)
 
 #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #model.to(device) # Move the model to the device
