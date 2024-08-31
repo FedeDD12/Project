@@ -7,6 +7,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from trl import SFTConfig, SFTTrainer, DataCollatorForCompletionOnlyLM
 from peft import LoraConfig
 from datasets import Dataset
+from peft import get_peft_model
 
 from huggingface_hub.hf_api import HfFolder; HfFolder.save_token("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")
 
@@ -65,6 +66,8 @@ peft_config = LoraConfig(
     bias="none",
     task_type="CAUSAL_LM",
 )
+
+model = get_peft_model(model, peft_config)
 
 sft_config = SFTConfig(
     output_dir="~/output",
