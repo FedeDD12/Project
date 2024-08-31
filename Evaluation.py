@@ -1,6 +1,8 @@
 
 import pandas as pd
-from adapters import AutoAdapterModel, AutoTokenizer
+from adapters import AutoAdapterModel, 
+from transformers import AutoTokenizer
+
 
 model_path="llama-3.1-8b-math"
 model = AutoAdapterModel.from_pretrained(model_path)
