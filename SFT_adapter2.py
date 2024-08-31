@@ -91,7 +91,7 @@ trainer = SFTTrainer(
     data_collator=collator,
     peft_config=peft_config,
     tokenizer=tokenizer,
-    max_seq_length=156,
+    max_seq_length=170,
 )
 
 trainer.train()
@@ -124,7 +124,7 @@ results=[]
 for question in eval_dataset["Question"]:
     input_text=f"### Question: {question} ### Answer:"
     inputs=tokenizer(input_text, return_tensors="pt")
-    outputs=model.generate(**inputs, max_length=128)
+    outputs=model.generate(**inputs, max_length=256)
 
     generated_text= tokenizer.decode(outputs[0], skip_special_tokens=True)
 
