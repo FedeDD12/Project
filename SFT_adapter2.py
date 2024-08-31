@@ -120,7 +120,7 @@ df2.to_csv('eval_dataset.csv', index=False)
 #print(f"Generated text: {generated_text}")
 
 
-
+results=[]
 for question in eval_dataset["Question"]:
     input_text=f"### Question: {question} ### Answer:"
     inputs=tokenizer(input_text, return_tensors="pt")
@@ -128,5 +128,11 @@ for question in eval_dataset["Question"]:
 
     generated_text= tokenizer.decode(outputs[0], skip_special_tokens=True)
 
+    if "### Answer:" in generated_text:
+        answer = generated_text.split("### Answer:")[1].strip()
+    else:
+        answer = generated_text.strip()
+    
+    results.append({'Question': question, 'Generated Text': answer})
     print(f"Generated text: {generated_text}")
 
