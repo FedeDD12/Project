@@ -1,13 +1,13 @@
 
 import pandas as pd
 import torch
-from peft import PeftModelForCausalLM 
+from peft import AutoPeftModelForCausalLM 
 from transformers import AutoTokenizer
 
 from huggingface_hub.hf_api import HfFolder; HfFolder.save_token("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")
 
 model_path="llama-3.1-8b-math"
-model = PeftModelForCausalLM.from_pretrained(model_path)
+model = AutoPeftModelForCausalLM.from_pretrained(model_path)
 
 tokenizer=AutoTokenizer.from_pretrained(model_path)
 
