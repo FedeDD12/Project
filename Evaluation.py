@@ -4,7 +4,7 @@ from adapters import AutoAdapterModel
 from transformers import AutoTokenizer
 
 
-model_path="llama-3.1-8b-math"
+model_path="checkpoint-7599"
 model = AutoAdapterModel.from_pretrained(model_path)
 
 tokenizer=AutoTokenizer.from_pretrained(model_path)
