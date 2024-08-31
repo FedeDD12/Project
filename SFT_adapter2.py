@@ -96,7 +96,9 @@ trainer = SFTTrainer(
 
 trainer.train()
 
-trainer.model.save_pretrained(new_model)
+model.save_pretrained("~/output")
+
+model.push_to_hub(new_model)
 
 eval_dataset=dataset["test"]
 df = pd.DataFrame(eval_dataset)
