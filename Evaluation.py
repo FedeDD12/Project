@@ -3,6 +3,7 @@ import pandas as pd
 from adapters import AutoAdapterModel 
 from transformers import AutoTokenizer
 
+from huggingface_hub.hf_api import HfFolder; HfFolder.save_token("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")
 
 model_path="checkpoint-7599"
 model = AutoAdapterModel.from_pretrained(model_path)
