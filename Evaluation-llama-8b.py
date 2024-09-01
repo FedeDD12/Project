@@ -1,18 +1,12 @@
 
 import pandas as pd
 import torch
-from peft import AutoPeftModelForCausalLM 
-from transformers import AutoTokenizer
+
 
 from huggingface_hub.hf_api import HfFolder; HfFolder.save_token("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")
 
-model_path="llama-3.1-8b-math"
-model = AutoPeftModelForCausalLM.from_pretrained(model_path)
-
-tokenizer=AutoTokenizer.from_pretrained(model_path)
-
+model="
 eval_dataset=pd.read_csv("eval_dataset.csv")
-print(eval_dataset.head())
 
 for question in eval_dataset["Question"]:
     input_text=f"### Question: {question} ### Answer:"
