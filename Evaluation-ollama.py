@@ -11,23 +11,23 @@ with open('results_noSFT.csv', 'w', newline='', encoding='utf-8') as file:
     writer.writerow(['Question', 'Answer'])  # Write the header row
 
 
-for i, text in enumerate(dataset["text"]):
+for text in dataset["text"]:
 
   response = ollama.chat(model='llama3.1:8b', messages=[
     {
       'role': 'user',
-      'content': ' ### Question: {} ### Answer:'.format{text}
+      'content': ' ### Question: "{}" ### Answer:'.format(text)
     },
   ])
 
-  print(i, response)
+  print(response)
   # Extract the question and answer from the response
   qa_text = response['message']['content']
 
   try:
-    question, answer = qa_text.split('**Answer:**')
+    question, answer = qa_text.split('### Answer:')
 
-    question=question.replace("**Question:**", "")
+    question=question.replace("### Question:", "")
   except Exception as e:
     print("Error {} encountered...skipping...".format(e))
     continue
