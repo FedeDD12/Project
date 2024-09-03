@@ -31,11 +31,8 @@ for question in dataset["Question"]:
   except Exception as e:
     print("Error {} encountered...skipping...".format(e))
     continue
-    
-  # Append the question and answer to the list as a tuple
 
   qa_pairs.append((question.strip(), answer.strip()))
 
-  # Write the question-answer pairs to a CSV file
-  with open('questions_and_answers.csv', 'a', newline='', encoding='utf-8') as file:
+  with open('results_noSFT.csv', 'a', newline='', encoding='utf-8') as file:
       writer = csv.writer(file)
