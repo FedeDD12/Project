@@ -16,7 +16,7 @@ for question in dataset["Question"]:
   response = ollama.chat(model='llama3.1:8b', messages=[
     {
       'role': 'user',
-      'content': ' ### Question: "{}" ### Answer:'.format(text)
+      'content': ' ### Question: "{}" ### Answer:'.format(question)
     },
   ])
 
