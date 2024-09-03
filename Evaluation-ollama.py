@@ -11,7 +11,7 @@ with open('results_noSFT.csv', 'w', newline='', encoding='utf-8') as file:
     writer.writerow(['Question', 'Answer'])  # Write the header row
 
 
-for text in dataset["text"]:
+for question in dataset["Question"]:
 
   response = ollama.chat(model='llama3.1:8b', messages=[
     {
