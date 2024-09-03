@@ -118,4 +118,4 @@ for question in eval_dataset["Question"]:
     print(f"Generated text: {generated_text}")
 
 df = pd.DataFrame(results)
-df.to_csv('results_instruct.csv', index=False)
+df.to_csv('results_instruct2.csv', index=False)
