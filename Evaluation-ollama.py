@@ -36,3 +36,4 @@ for question in dataset["Question"]:
 
   with open('results_noSFT.csv', 'a', newline='', encoding='utf-8') as file:
       writer = csv.writer(file)
+      writer.writerow(results[-1])
