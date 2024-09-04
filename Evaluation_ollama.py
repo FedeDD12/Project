@@ -32,7 +32,7 @@ for question in dataset["Question"]:
     #print("Error {} encountered...skipping...".format(e))
     #continue
 
-  results.append((question.strip(), qa_text.strip())
+  results.append((question.strip(), qa_text.strip()))
 
   with open('results_noSFT.csv', 'a', newline='', encoding='utf-8') as file:
       writer = csv.writer(file)
