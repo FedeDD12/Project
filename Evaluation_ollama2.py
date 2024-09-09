@@ -2,11 +2,11 @@ import ollama
 import pandas as pd
 import csv
 
-dataset=pd.read_csv("eval_dataset2.csv")
+dataset=pd.read_csv("eval_dataset3.csv")
 
 results=[]
 
-with open('results_noSFT2.csv', 'w', newline='', encoding='utf-8') as file:
+with open('results_noSFT3.csv', 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerow(['Question', 'Generated Text'])  # Write the header row
 
@@ -37,6 +37,6 @@ for question in dataset["Question"]:
   results.append((question.strip(), qa_text.strip()))
 
   # Write the question-answer pairs to a CSV file
-  with open('results_noSFT2.csv', 'a', newline='', encoding='utf-8') as file:
+  with open('results_noSFT3.csv', 'a', newline='', encoding='utf-8') as file:
       writer = csv.writer(file)
       writer.writerow(results[-1])
