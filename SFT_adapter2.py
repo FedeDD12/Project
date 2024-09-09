@@ -13,7 +13,7 @@ from huggingface_hub.hf_api import HfFolder; HfFolder.save_token("hf_WuJQzrKNIbH
 
 device_map={"":0}
 model_name="meta-llama/Meta-Llama-3.1-8B"
-new_model = "llama-3.1-8b-math2"
+new_model = "llama-3.1-8b-math3"
 
 compute_dtype=getattr(torch, "float16")
 
@@ -41,7 +41,7 @@ model.config.pretraining_tp=1
 tokenizer=AutoTokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 
-dataset=pd.read_csv("questions_and_answers2.csv")
+dataset=pd.read_csv("questions_and_answers3.csv")
 dataset=Dataset.from_pandas(dataset)
 
 dataset=dataset.train_test_split(test_size=0.1)
@@ -105,8 +105,8 @@ train_dataset=dataset["train"]
 eval_dataset=dataset["test"]
 df1= pd.DataFrame(train_dataset)
 df2 = pd.DataFrame(eval_dataset)
-df1.to_csv('train_dataset2.csv', index=False)
-df2.to_csv('eval_dataset2.csv', index=False)
+df1.to_csv('train_dataset3.csv', index=False)
+df2.to_csv('eval_dataset3.csv', index=False)
 
 
 
@@ -127,4 +127,4 @@ for question in eval_dataset["Question"]:
     print(f"Generated text: {generated_text}")
 
 df = pd.DataFrame(results)
-df.to_csv('results2.csv', index=False)
+df.to_csv('results3.csv', index=False)
