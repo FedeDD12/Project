@@ -13,7 +13,7 @@ from huggingface_hub.hf_api import HfFolder; HfFolder.save_token("hf_WuJQzrKNIbH
 
 device_map={"":0}
 model_name="meta-llama/Meta-Llama-3.1-8B-Instruct"
-new_model = "llama-3.1-8b-Instruct-math2"
+new_model = "llama-3.1-8b-Instruct-math3"
 
 compute_dtype=getattr(torch, "float16")
 
@@ -41,8 +41,8 @@ model.config.pretraining_tp=1
 tokenizer=AutoTokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 
-train_dataset=pd.read_csv("train_dataset2.csv")
-eval_dataset=pd.read_csv("eval_dataset2.csv")
+train_dataset=pd.read_csv("train_dataset3.csv")
+eval_dataset=pd.read_csv("eval_dataset3.csv")
 train_dataset=Dataset.from_pandas(train_dataset)
 eval_dataset=Dataset.from_pandas(eval_dataset)
 
@@ -118,4 +118,4 @@ for question in eval_dataset["Question"]:
     print(f"Generated text: {generated_text}")
 
 df = pd.DataFrame(results)
-df.to_csv('results_instruct2.csv', index=False)
+df.to_csv('results_instruct3.csv', index=False)
